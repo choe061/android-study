@@ -36,7 +36,7 @@ public class KakaoSignupActivity extends BaseActivity implements KakaoSignupCont
     @Override
     public void redirectLoginActivity() {
         final Intent intent = new Intent(this, LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
         finish();
     }

@@ -1,5 +1,9 @@
 package com.choi.share_book.util.di.module;
 
+import android.app.Application;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -25,6 +29,12 @@ public class NetModule {
 
     public NetModule(String baseUrl) {
         this.baseUrl = baseUrl;
+    }
+
+    @Provides
+    @Singleton
+    SharedPreferences providesSharedPreferences(Application application) {
+        return PreferenceManager.getDefaultSharedPreferences(application);
     }
 
     @Provides
