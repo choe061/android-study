@@ -1,7 +1,13 @@
 package com.choi.share_book.presenter;
 
 import android.util.Log;
+import android.widget.Toast;
 
+import com.choi.share_book.model.api.UserApi;
+import com.choi.share_book.model.domain.User;
+import com.choi.share_book.network.ApiCallback;
+import com.choi.share_book.network.HttpService;
+import com.choi.share_book.network.RestResponse;
 import com.choi.share_book.presenter.contact.KakaoSignupContact;
 import com.kakao.auth.ErrorCode;
 import com.kakao.network.ErrorResult;
@@ -18,9 +24,11 @@ public class KakaoSignupPresenter implements KakaoSignupContact.Presenter {
 
     private static final String TAG = KakaoSignupPresenter.class.getName();
     private KakaoSignupContact.View view;
+    private UserApi userApi;
 
-    public KakaoSignupPresenter(KakaoSignupContact.View view) {
+    public KakaoSignupPresenter(KakaoSignupContact.View view, HttpService httpService) {
         this.view = view;
+        this.userApi = new UserApi(httpService);
     }
 
     @Override
@@ -73,6 +81,22 @@ public class KakaoSignupPresenter implements KakaoSignupContact.Presenter {
         long kakaoID = profile.getId();
         String kakaoEmail = profile.getEmail();
         Log.d(TAG, "ID : "+kakaoID+", Email : "+kakaoEmail);
-        view.redirectMainActivity();
+        User user = new User(profile.getId(), profile.getEmail(),
+                profile.getProfileImagePath(), profile.getNickname());
+        userApi.requestCreateUser(user, new ApiCallback<RestResponse>() {
+            @Override
+            public void onSuccess(RestResponse model) {
+                //가입 완료
+                view.redirectMainActivity();
+            }
+
+            @Override
+            public void onError(String msg) {
+                //가입 실패
+                Logger.e(msg);
+                view.showToast("오류가 발생했습니다. 다시 시도해주세요.");
+                view.redirectLoginActivity();
+            }
+        });
     }
 }
