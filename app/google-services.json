@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "200032483676",
+    "firebase_url": "https://share-book-e3a68.firebaseio.com",
+    "project_id": "share-book-e3a68",
+    "storage_bucket": "share-book-e3a68.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:200032483676:android:3d801d8d3ada1194",
+        "android_client_info": {
+          "package_name": "com.choi.share_book"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "200032483676-dn66cf15avaqn7cganv54kt75eba2hlj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKdIT_fVWLMUsmr88yvl9qeOm5VLoUYlk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

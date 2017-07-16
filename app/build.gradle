@@ -58,4 +58,9 @@ dependencies {
 
     // 카카오 로그인 sdk를 사용하기 위해 필요.
     compile group: 'com.kakao.sdk', name: 'usermgmt', version: rootProject.KAKAO_SDK_VERSION
+
+    compile "com.google.firebase:firebase-messaging:${firebase}"
 }
+
+// ADD THIS AT THE BOTTOM
+apply plugin: 'com.google.gms.google-services'
