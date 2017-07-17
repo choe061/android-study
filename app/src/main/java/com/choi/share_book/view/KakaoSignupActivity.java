@@ -23,6 +23,12 @@ public class KakaoSignupActivity extends BaseActivity implements KakaoSignupCont
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        kakaoSignupPresenter.onDestroy();
+    }
+
+    @Override
     public void showToast(String title) {
         Toast.makeText(this, title, Toast.LENGTH_SHORT).show();
     }

@@ -7,6 +7,7 @@ import com.choi.share_book.network.RestResponse;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -21,9 +22,9 @@ public class UserApi {
         this.httpService = httpService;
     }
 
-    public void requestCreateUser(User user, ApiCallback<RestResponse> callback) {
+    public Disposable requestCreateUser(User user, ApiCallback<RestResponse> callback) {
         Observable<RestResponse> createUser = httpService.createUser(user);
-        createUser.subscribeOn(Schedulers.newThread())
+        return createUser.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(callback::onSuccess, throwable -> callback.onError(throwable.getMessage()));
     }

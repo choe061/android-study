@@ -17,5 +17,6 @@ public class User {
     private String email;
     private String profile_img_url;
     private String nickname;
+    private String refreshedToken;
 
 }
