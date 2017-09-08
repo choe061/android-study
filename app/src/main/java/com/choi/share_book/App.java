@@ -17,7 +17,7 @@ import com.kakao.auth.KakaoSDK;
  */
 
 public class App extends Application {
-    private AppComponent appComponent;
+    private static AppComponent appComponent;
     @SuppressLint("StaticFieldLeak")
     private static volatile App instance = null;
 
@@ -32,7 +32,7 @@ public class App extends Application {
         KakaoSDK.init(new KakaoSDKAdapter());
     }
 
-    public AppComponent getAppComponent() {
+    public static AppComponent getAppComponent() {
         return appComponent;
     }
 
